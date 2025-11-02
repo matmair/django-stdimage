@@ -55,7 +55,7 @@ jobs:
       - run: uv pip install --upgrade pip build wheel twine readme-renderer
       - run: uv build --sdist --wheel
       - run: uv run twine check dist/*
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v5
         with:
           path: dist/*
 
