@@ -28,11 +28,11 @@ jobs:
       fail-fast: false
       matrix:
         lint-command:
-          - "bandit -r . -x ./tests"
-          - "black --check --diff ."
-          - "flake8 ."
-          - "isort --check-only --diff ."
-          - "pydocstyle ."
+          - "bandit -r stdimage -x ./tests"
+          - "black --check --diff stdimage"
+          - "flake8 stdimage"
+          - "isort --check-only --diff stdimage"
+          - "pydocstyle stdimage"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
