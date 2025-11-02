@@ -81,6 +81,7 @@ jobs:
       uses: astral-sh/setup-uv@v7
       with:
         python-version: ${{ matrix.python-version }}
+        activate-environment: true
     - run: sudo apt install gettext -y
     - uses: actions/checkout@v4
     - run: uv pip install --upgrade pip codecov
