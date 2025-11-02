@@ -1,0 +1,93 @@
+[project]
+name = "django-stdimage"
+authors = [
+    {name = "Johannes Hoppe", email = "info@johanneshoppe.com"},]
+version = "6.0.3.rc0"
+description = "Django Standarized Image Field"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "Django>=5.2",
+    "pillow>=2.5"
+]
+urls = { "Homepage" = "https://github.com/codingjoe/django-stdimage"}
+classifiers = [
+    "Development Status :: 7 - Inactive",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Topic :: Software Development",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Framework :: Django :: 5.2"
+]
+
+[tool.pytest]
+testpaths =["tests"]
+norecursedirs=["venv","env",".eggs"]
+DJANGO_SETTINGS_MODULE="tests.settings"
+addopts ="--cov=stdimage --nomigrations --tb=short"
+filterwarnings =["ignore::DeprecationWarning"]
+
+[tool.coverage.run]
+source = "."
+omit =[
+  "*/migrations/*",
+  "*/tests/*",
+  "*/test_*.py",
+  ".tox"
+]
+[tool.coverage.report]
+ignore_errors = true
+show_missing = true
+
+[tool.flake8]
+max_line_length=88
+select = "C,E,F,W,B,B950"
+ignore = [
+    "E203",
+    "E501",
+    "W503",
+]
+
+[tool.pydocstyle]
+add-ignore = "D1"
+# match-dir = "(?!tests|env|docs|\.).*"
+
+[tool.isort]
+atomic = true
+line_length = 88
+known_first_party = "stdimage, tests"
+include_trailing_comma = true
+multi_line_output = 3
+force_grid_wrap = 0
+use_parentheses = true
+default_section="THIRDPARTY"
+combine_as_imports = true
+
+[tool.bandit]
+exclude_dirs = ["tests",]
+
+[dependency-groups]
+lint = [
+    "bandit==1.8.6",
+    "black==24.3.0",
+    "flake8==6.1.0",
+    "flake8-pyproject>=1.2.3",
+    "isort==5.12.0",
+    "msgcheck==4.0.0",
+    "pydocstyle==6.3.0",
+]
+progressbar = [
+    "progressbar2>=3.0.0",
+]
+test = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-django>=4.11.1",
+]
+
